@@ -12,6 +12,40 @@ let activeCategory = "Todos";
 let searchQuery = "";
 let currentSort = "padrao";
 
+// GESTÃO DE FAVORITOS (LOCALSTORAGE)
+const FAVORITOS_KEY = "achados_incriveis_favoritos";
+
+function obterFavoritos() {
+    try {
+        return JSON.parse(localStorage.getItem(FAVORITOS_KEY) || "[]");
+    } catch {
+        return [];
+    }
+}
+
+function atualizarContadorFavoritos() {
+    const favCountEl = document.getElementById("favCount");
+    if (favCountEl) {
+        const favs = obterFavoritos();
+        favCountEl.textContent = favs.length;
+    }
+}
+
+function alternarFavorito(nomeProduto) {
+    let favs = obterFavoritos();
+    const index = favs.indexOf(nomeProduto);
+    if (index > -1) {
+        favs.splice(index, 1);
+        mostrarToast("Removido dos favoritos");
+    } else {
+        favs.push(nomeProduto);
+        mostrarToast("Salvo nos favoritos! ❤️");
+    }
+    localStorage.setItem(FAVORITOS_KEY, JSON.stringify(favs));
+    atualizarContadorFavoritos();
+    renderizarProdutos();
+}
+
 function calcularDesconto(precoAntigo, preco) {
     if (!precoAntigo || precoAntigo <= preco) return 0;
     const desconto = ((precoAntigo - preco) / precoAntigo) * 100;
@@ -71,12 +105,16 @@ function fallbackCopiar(texto) {
 }
 
 function filtrarEOrdenarProdutos() {
+    const favs = obterFavoritos();
+
     let filtrados = produtos.filter((produto) => {
         // Filtro por Categoria
         const catProduto = (produto.categoria || "").toLowerCase();
         let bateCategoria = true;
 
-        if (activeCategory !== "Todos") {
+        if (activeCategory === "Favoritos") {
+            bateCategoria = favs.includes(produto.nome);
+        } else if (activeCategory !== "Todos") {
             if (activeCategory === "Casa") {
                 bateCategoria = catProduto.includes("casa");
             } else {
@@ -116,11 +154,14 @@ function renderizarProdutos() {
     if (!productsGrid) return;
 
     const lista = filtrarEOrdenarProdutos();
+    const favs = obterFavoritos();
     productsGrid.innerHTML = "";
 
     // Atualiza contagem de resultados
     if (resultsCountEl) {
-        if (lista.length === 0) {
+        if (activeCategory === "Favoritos") {
+            resultsCountEl.textContent = `${lista.length} ${lista.length === 1 ? 'produto favoritado' : 'produtos favoritados'}`;
+        } else if (lista.length === 0) {
             resultsCountEl.textContent = "Nenhum produto encontrado";
         } else if (lista.length === 1) {
             resultsCountEl.textContent = "1 achado encontrado";
@@ -131,7 +172,19 @@ function renderizarProdutos() {
 
     // Exibe ou oculta estado vazio
     if (lista.length === 0) {
-        if (emptyStateEl) emptyStateEl.style.display = "block";
+        if (emptyStateEl) {
+            emptyStateEl.style.display = "block";
+            const emptyTitle = emptyStateEl.querySelector("h3");
+            const emptyDesc = emptyStateEl.querySelector("p");
+
+            if (activeCategory === "Favoritos") {
+                if (emptyTitle) emptyTitle.textContent = "Nenhum favorito salvo ainda";
+                if (emptyDesc) emptyDesc.textContent = "Clique no coraçãozinho ❤️ de qualquer produto para salvar aqui e ver mais tarde.";
+            } else {
+                if (emptyTitle) emptyTitle.textContent = "Nenhum achado encontrado";
+                if (emptyDesc) emptyDesc.textContent = "Não encontramos nenhum produto com esse termo ou categoria.";
+            }
+        }
         return;
     } else {
         if (emptyStateEl) emptyStateEl.style.display = "none";
@@ -142,9 +195,15 @@ function renderizarProdutos() {
         card.classList.add("product-card");
 
         const desconto = calcularDesconto(produto.precoAntigo, produto.preco);
+        const isFavorito = favs.includes(produto.nome);
 
         card.innerHTML = `
             <div class="product-image">
+                <button type="button" class="fav-btn ${isFavorito ? 'active' : ''}" data-nome="${produto.nome}" title="${isFavorito ? 'Remover dos favoritos' : 'Favoritar produto'}">
+                    <svg viewBox="0 0 24 24" width="16" height="16" fill="${isFavorito ? '#e11d48' : 'none'}" stroke="${isFavorito ? '#e11d48' : 'currentColor'}" stroke-width="2">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </button>
                 <img src="${produto.imagem}" alt="${produto.nome}" loading="lazy">
                 ${desconto > 0 ? `<span class="image-discount-badge">-${desconto}%</span>` : ""}
             </div>
@@ -270,14 +329,17 @@ function renderizarPerfumes() {
                             <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2">
                                 <polyline points="20 6 9 17 4 12"></polyline>
                             </svg>
-                            Produto Original
+                            Produto 100% Original
                         </span>
                     </div>
                 </div>
 
                 <div class="product-actions">
-                    <a href="${perfume.link || '#'}" class="product-button">
-                        <span>VER PRODUTO</span>
+                    <a href="${perfume.link || 'https://wa.link/vvlu12'}" target="_blank" rel="noopener noreferrer" class="whatsapp-product-btn">
+                        <svg viewBox="0 0 24 24" width="17" height="17" fill="currentColor">
+                            <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.44 0-2.86-.38-4.11-1.09l-.29-.17-3.12.82.83-3.04-.19-.31a8.196 8.196 0 0 1-1.26-4.44c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.71 4.31 3.8.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29z"/>
+                        </svg>
+                        <span>PEDIR NO WHATSAPP</span>
                     </a>
                 </div>
             </div>
@@ -289,16 +351,30 @@ function renderizarPerfumes() {
 
 // EVENT LISTENERS
 
-// Copiar link via delegação de evento
+// Copiar link e Favoritos via delegação de evento
 if (productsGrid) {
     productsGrid.addEventListener("click", (e) => {
-        const btn = e.target.closest(".copy-link-btn");
-        if (btn) {
+        // Favorito
+        const favBtn = e.target.closest(".fav-btn");
+        if (favBtn) {
             e.preventDefault();
-            const link = btn.getAttribute("data-link");
+            e.stopPropagation();
+            const nome = favBtn.getAttribute("data-nome");
+            if (nome) {
+                alternarFavorito(nome);
+            }
+            return;
+        }
+
+        // Copiar link
+        const copyBtn = e.target.closest(".copy-link-btn");
+        if (copyBtn) {
+            e.preventDefault();
+            const link = copyBtn.getAttribute("data-link");
             if (link) {
                 copiarParaAreaTransferencia(link);
             }
+            return;
         }
     });
 }
@@ -367,13 +443,39 @@ if (resetFiltersBtn) {
 }
 
 // INICIALIZAÇÃO
-document.addEventListener("DOMContentLoaded", () => {
-    renderizarProdutos();
-    renderizarPerfumes();
-});
+function inicializarApp() {
+    atualizarContadorFavoritos();
 
-// Executa também imediatamente caso o DOM já esteja pronto
-if (document.readyState === "interactive" || document.readyState === "complete") {
+    // Ler parâmetros da URL para busca ou categoria direta
+    try {
+        const urlParams = new URLSearchParams(window.location.search);
+        const buscaParam = urlParams.get("busca");
+        const catParam = urlParams.get("categoria");
+
+        if (buscaParam) {
+            searchQuery = buscaParam;
+            if (searchInput) searchInput.value = buscaParam;
+            if (clearSearchBtn) clearSearchBtn.style.display = "block";
+        }
+
+        if (catParam && categoriesContainer) {
+            const btnCat = categoriesContainer.querySelector(`[data-category="${catParam}"]`);
+            if (btnCat) {
+                categoriesContainer.querySelectorAll(".category").forEach((b) => b.classList.remove("active"));
+                btnCat.classList.add("active");
+                activeCategory = catParam;
+            }
+        }
+    } catch (e) {
+        console.warn("Erro ao ler parâmetros da URL:", e);
+    }
+
     renderizarProdutos();
     renderizarPerfumes();
+}
+
+document.addEventListener("DOMContentLoaded", inicializarApp);
+
+if (document.readyState === "interactive" || document.readyState === "complete") {
+    inicializarApp();
 }
