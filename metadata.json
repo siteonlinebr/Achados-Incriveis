@@ -1,0 +1,8 @@
+{
+  "name": "Achados Incríveis",
+  "description": "Achados, ofertas e produtos que realmente valem a pena.",
+  "permissions": [],
+  "capabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

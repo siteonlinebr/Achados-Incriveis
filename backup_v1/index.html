@@ -63,41 +63,15 @@
         </div>
     </section>
 
-    <section class="controls-section">
+    <section class="categories">
         <div class="container">
 
-            <div class="search-and-filters">
-                <div class="search-box">
-                    <svg class="search-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
-                        <circle cx="11" cy="11" r="8"></circle>
-                        <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
-                    </svg>
-                    <input type="text" id="searchInput" placeholder="Buscar por produto (ex: parafusadeira, gato, caneca...)" autocomplete="off">
-                    <button type="button" id="clearSearchBtn" class="clear-search-btn" title="Limpar busca" style="display: none;">&times;</button>
-                </div>
-
-                <div class="sort-box">
-                    <span class="sort-label">Ordenar:</span>
-                    <select id="sortSelect" class="sort-select">
-                        <option value="padrao">Destaques</option>
-                        <option value="menor-preco">Menor Preço</option>
-                        <option value="maior-preco">Maior Preço</option>
-                        <option value="maior-desconto">Maior Desconto</option>
-                    </select>
-                </div>
-            </div>
-
-            <div class="categories-list" id="categoriesList">
-                <button class="category active" data-category="Todos">Todos</button>
-                <button class="category" data-category="Ferramentas">Ferramentas</button>
-                <button class="category" data-category="Casa">Casa</button>
-                <button class="category" data-category="Brinquedos">Brinquedos</button>
-                <button class="category" data-category="Pets">Pets</button>
-                <button class="category" data-category="Moda">Moda</button>
-            </div>
-
-            <div class="filter-status">
-                <span id="resultsCount">Carregando achados...</span>
+            <div class="categories-list">
+                <button class="category active">Todos</button>
+                <button class="category">Eletrônicos</button>
+                <button class="category">Casa</button>
+                <button class="category">Games</button>
+                <button class="category">Ofertas</button>
             </div>
 
         </div>
@@ -115,13 +89,6 @@
                 
             </div>
 
-            <div id="emptyState" class="empty-state" style="display: none;">
-                <div class="empty-state-icon">🔍</div>
-                <h3>Nenhum achado encontrado</h3>
-                <p>Não encontramos nenhum produto com esse termo ou categoria.</p>
-                <button type="button" id="resetFiltersBtn" class="reset-filters-btn">Limpar filtros e ver todos</button>
-            </div>
-
         </div>
     </section>
 
@@ -130,7 +97,7 @@
     <div class="container">
 
         <div class="section-title">
-            <p>PERFUMES & BELEZA</p>
+            <p>PERFUMES</p>
             <h2>Perfumes selecionados</h2>
         </div>
 
@@ -141,8 +108,6 @@
     </section>
 
     </main>
-
-    <div id="toast" class="toast" role="status" aria-live="polite">Link copiado com sucesso!</div>
 
     <footer class="footer">
         <div class="container">
