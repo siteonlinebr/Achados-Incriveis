@@ -1,5 +1,7 @@
 const produtos = [
     {
+        id: 1,
+        codigo: "#01",
         nome: "Parafusadeira Chave de Impacto 48V 800Nm Elétrica Sem Fio Alta Potência, Kit Completo com Soquetes e Maleta para Oficina",
         categoria: "Ferramentas",
         imagem: "https://down-br.img.susercontent.com/file/br-11134207-820m2-mqr9tjtr1fk1de.webp",
@@ -8,10 +10,17 @@ const produtos = [
         precoAntigo: null,
         cupom: null,
         parcelamento: null,
-        link: "https://s.shopee.com.br/8Kp3CZ74mX"
+        link: "https://s.shopee.com.br/8Kp3CZ74mX",
+        avaliacao: 4.8,
+        totalAvaliacoes: "1.4k",
+        pros: ["Motor forte de 800Nm para aperto e desaperto", "Acompanha maleta e jogo completo de soquetes"],
+        contra: "Carga inicial completa de 4h recomendada antes do uso",
+        resumo: "Perfeita para oficina, borracharia e manutenção pesada sem depender de fios."
     },
 
     {
+        id: 2,
+        codigo: "#02",
         nome: "Kit panelinha acrílica para brigadeiro com colherzinha - 50 conjuntos",
         categoria: "Casa e Festa",
         imagem: "https://down-br.img.susercontent.com/file/sg-11134201-7rblf-lp81d4x60u14ac@resize_w450_nl.webp",
@@ -20,10 +29,17 @@ const produtos = [
         precoAntigo: null,
         cupom: null,
         parcelamento: "11x R$ 5,80",
-        link: "https://s.shopee.com.br/1qbWI217Tm"
+        link: "https://s.shopee.com.br/1qbWI217Tm",
+        avaliacao: 4.9,
+        totalAvaliacoes: "890",
+        pros: ["Acompanha 50 mini colheres inclusas", "Acrílico cristalino com visual de festa gourmet"],
+        contra: "Porções individuais de tamanho mini",
+        resumo: "Ideal para aniversários, casamentos e chás, deixando docinhos com acabamento profissional."
     },
 
     {
+        id: 3,
+        codigo: "#03",
         nome: "Caneca Porcelana ONE PIECE BOCAO LUFFY RORONOA ZORO Personalizada com caixinha",
         categoria: "Casa e Presentes",
         imagem: "https://down-br.img.susercontent.com/file/br-11134207-81z1k-mid76ej3g9oi61@resize_w450_nl.webp",
@@ -32,10 +48,17 @@ const produtos = [
         precoAntigo: 39.90,
         cupom: null,
         parcelamento: null,
-        link: "https://s.shopee.com.br/6fgm2qkP4q"
+        link: "https://s.shopee.com.br/6fgm2qkP4q",
+        avaliacao: 5.0,
+        totalAvaliacoes: "2.1k",
+        pros: ["Estampa nítida de alta durabilidade", "Acompanha caixa especial decorada para presente"],
+        contra: "Evitar lavar com lado abrasivo da esponja",
+        resumo: "Achado imperdível para fãs de anime e presentes criativos com porcelana de boa qualidade."
     },
 
     {
+        id: 4,
+        codigo: "#04",
         nome: "Mãozinha Realista Mão O Coisa Borracha Decoração Halloween",
         categoria: "Casa e Decoração",
         imagem: "https://down-br.img.susercontent.com/file/sg-11134201-7rd69-m6ogady7on179d@resize_w450_nl.webp",
@@ -44,10 +67,17 @@ const produtos = [
         precoAntigo: null,
         cupom: null,
         parcelamento: "5x R$ 5,71",
-        link: "https://s.shopee.com.br/3g2jZ7Zqu9"
+        link: "https://s.shopee.com.br/3g2jZ7Zqu9",
+        avaliacao: 4.7,
+        totalAvaliacoes: "650",
+        pros: ["Textura e cicatrizes muito fiéis ao filme", "Fica em pé sozinha na bancada ou mesa"],
+        contra: "Material de borracha flexível",
+        resumo: "Sucesso decorativo para mesas de escritório, gravações de vídeos e festas temáticas."
     },
 
     {
+        id: 5,
+        codigo: "#05",
         nome: "Relógio Despertador de Mesa Parede Retrô Revólver / Moto Pronta Entrega Envio Rápido",
         categoria: "Casa e Decoração",
         imagem: "https://down-br.img.susercontent.com/file/br-11134201-820li-mqxapagbnu9x3d@resize_w450_nl.webp",
@@ -56,10 +86,17 @@ const produtos = [
         precoAntigo: null,
         cupom: null,
         parcelamento: "7x R$ 6,41",
-        link: "https://s.shopee.com.br/AAG9jqhCim"
+        link: "https://s.shopee.com.br/AAG9jqhCim",
+        avaliacao: 4.8,
+        totalAvaliacoes: "920",
+        pros: ["Visual vintage que vira destaque no ambiente", "Serve tanto em mesa quanto na parede"],
+        contra: "Utiliza 1 pilha AA (não inclusa)",
+        resumo: "Combina charme retrô com utilidade diária para não perder a hora com estilo."
     },
 
     {
+        id: 6,
+        codigo: "#06",
         nome: "Crianças Trem Conjunto Cobra Comer Blocos Automotivo Deslizante Jogo Rastejando Brinquedos Para Meninos Menina Joven",
         categoria: "Brinquedos",
         imagem: "https://down-br.img.susercontent.com/file/sg-11134201-825as-mqwzu85uusxxd9@resize_w450_nl.webp",
@@ -68,10 +105,17 @@ const produtos = [
         precoAntigo: null,
         cupom: null,
         parcelamento: "12x R$ 14,36",
-        link: "https://s.shopee.com.br/6VMrNj1foT"
+        link: "https://s.shopee.com.br/6VMrNj1foT",
+        avaliacao: 4.9,
+        totalAvaliacoes: "1.8k",
+        pros: ["Mecanismo automático que engole os blocos", "Estimula raciocínio e foco infantil"],
+        contra: "Melhor desempenho em pisos lisos",
+        resumo: "Brinquedo educativo muito divertido que prende a atenção e afasta as crianças das telas."
     },
 
     {
+        id: 7,
+        codigo: "#07",
         nome: "Dispensador Automático de Palitos de Dente Forma de Pássaro, Porta Palitos Criativo para Mesa",
         categoria: "Casa e Decoração",
         imagem: "https://down-br.img.susercontent.com/file/br-11134207-820ly-mrcf8apkm61126_tn",
@@ -80,54 +124,87 @@ const produtos = [
         precoAntigo: 39.90,
         cupom: null,
         parcelamento: "4x R$ 6,03",
-        link: "https://s.shopee.com.br/3g2oGQhgi7"
+        link: "https://s.shopee.com.br/3g2oGQhgi7",
+        avaliacao: 4.8,
+        totalAvaliacoes: "3.4k",
+        pros: ["Entrega 1 palito por clique sem tocar nos outros", "Design de pássaro simpático para a mesa"],
+        contra: "Funciona melhor com palitos lisos convencionais",
+        resumo: "Achado viral que além de higiênico decora qualquer mesa de jantar ou bancada de cozinha."
     },
 
     {
-    nome: "Brinquedo para Gato",
-    categoria: "Pets",
-    imagem: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m9g0umlzvvaxda@resize_w450_nl.webp",
-    preco: 27.71,
-    precoNormal: null,
-    precoAntigo: null,
-    cupom: null,
-    parcelamento: "5x R$ 6,15",
-    link: "https://s.shopee.com.br/4Az4ruABW6"
-},
+        id: 8,
+        codigo: "#08",
+        nome: "Brinquedo para Gato",
+        categoria: "Pets",
+        imagem: "https://down-br.img.susercontent.com/file/br-11134207-7r98o-m9g0umlzvvaxda@resize_w450_nl.webp",
+        preco: 27.71,
+        precoNormal: null,
+        precoAntigo: null,
+        cupom: null,
+        parcelamento: "5x R$ 6,15",
+        link: "https://s.shopee.com.br/4Az4ruABW6",
+        avaliacao: 4.9,
+        totalAvaliacoes: "5.1k",
+        pros: ["Gasta a energia do gato e diminui o estresse", "Material resistente a mordidas e unhas"],
+        contra: "Gatos idosos podem levar tempo para se acostumar",
+        resumo: "Excelente para enriquecimento ambiental de felinos, estimulando instintos naturais de caça."
+    },
 
-{
-    nome: "Parafusadeira Furadeira Elétrica 26V/68V com 2 Baterias, Maleta e Acessórios",
-    categoria: "Ferramentas",
-    imagem: "https://down-br.img.susercontent.com/file/cn-11134207-820l4-mos0wkjf4f0i2c@resize_w450_nl.webp",
-    preco: 131.10,
-    precoNormal: null,
-    precoAntigo: null,
-    cupom: null,
-    parcelamento: "12x R$ 13,39",
-    link: "https://s.shopee.com.br/7fYyI10SNG"
-},
+    {
+        id: 9,
+        codigo: "#09",
+        nome: "Parafusadeira Furadeira Elétrica 26V/68V com 2 Baterias, Maleta e Acessórios",
+        categoria: "Ferramentas",
+        imagem: "https://down-br.img.susercontent.com/file/cn-11134207-820l4-mos0wkjf4f0i2c@resize_w450_nl.webp",
+        preco: 131.10,
+        precoNormal: null,
+        precoAntigo: null,
+        cupom: null,
+        parcelamento: "12x R$ 13,39",
+        link: "https://s.shopee.com.br/7fYyI10SNG",
+        avaliacao: 4.8,
+        totalAvaliacoes: "2.7k",
+        pros: ["Acompanha 2 baterias para não parar o trabalho", "Maleta completa com brocas e ponteiras"],
+        contra: "Foco em alvenaria leve, madeira e montagem",
+        resumo: "O kit mais completo na faixa de preço para nunca mais passar sufoco consertando ou montando móveis."
+    },
 
-{
-    nome: "Kit 3 Calças Femininas Plus Size Jogger, Pantalona e Jeans Cós Alto",
-    categoria: "Moda",
-    imagem: "https://down-br.img.susercontent.com/file/br-11134207-820l8-mp46fozawdttda@resize_w450_nl.webp",
-    preco: 85.41,
-    precoNormal: 89.90,
-    precoAntigo: null,
-    cupom: null,
-    parcelamento: "12x R$ 8,72",
-    link: "https://s.shopee.com.br/9ANo8TCxMC"
-},
+    {
+        id: 10,
+        codigo: "#10",
+        nome: "Kit 3 Calças Femininas Plus Size Jogger, Pantalona e Jeans Cós Alto",
+        categoria: "Moda",
+        imagem: "https://down-br.img.susercontent.com/file/br-11134207-820l8-mp46fozawdttda@resize_w450_nl.webp",
+        preco: 85.41,
+        precoNormal: 89.90,
+        precoAntigo: null,
+        cupom: null,
+        parcelamento: "12x R$ 8,72",
+        link: "https://s.shopee.com.br/9ANo8TCxMC",
+        avaliacao: 4.7,
+        totalAvaliacoes: "1.1k",
+        pros: ["3 peças versáteis que combinam com qualquer look", "Cós alto anatômico super confortável"],
+        contra: "Consulte a tabela de medidas no anúncio",
+        resumo: "Excelente economia por peça para renovar o guarda-roupa com modelos modernos e elegantes."
+    },
 
-{
-    nome: "Climatizador Ventisol CLI0601 6 Litros 60W",
-    categoria: "Casa e Decoração",
-    imagem: "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mj06c2m8m58j9d@resize_w450_nl.webp",
-    preco: 237.40,
-    precoNormal: 263.05,
-    precoAntigo: null,
-    cupom: "com cupom",
-    parcelamento: "12x R$ 24,25",
-    link: "https://s.shopee.com.br/8pkxknyurY"
-},
+    {
+        id: 11,
+        codigo: "#11",
+        nome: "Climatizador Ventisol CLI0601 6 Litros 60W",
+        categoria: "Casa e Decoração",
+        imagem: "https://down-br.img.susercontent.com/file/br-11134207-81ztc-mj06c2m8m58j9d@resize_w450_nl.webp",
+        preco: 237.40,
+        precoNormal: 263.05,
+        precoAntigo: null,
+        cupom: "com cupom",
+        parcelamento: "12x R$ 24,25",
+        link: "https://s.shopee.com.br/8pkxknyurY",
+        avaliacao: 4.6,
+        totalAvaliacoes: "980",
+        pros: ["Tanque de 6L para várias horas de ar fresco", "Consome apenas 60W (muito mais econômico que ar-condicionado)"],
+        contra: "Para ar mais gelado, recomenda-se colocar água com gelo",
+        resumo: "Solução prática e econômica para aliviar o calor e hidratar o ar em dias secos."
+    }
 ];

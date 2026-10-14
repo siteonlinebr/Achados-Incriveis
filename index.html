@@ -6,22 +6,27 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
     <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-0W3R34G39B"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-0W3R34G39B');
-</script>
-<meta name="google-site-verification" content="NH8bFxLGby8Bvwdi1g7GQOakWHas0kSHAoZ2n3vzGQ8" />
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0W3R34G39B"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-0W3R34G39B');
+    </script>
+    <meta name="google-site-verification" content="NH8bFxLGby8Bvwdi1g7GQOakWHas0kSHAoZ2n3vzGQ8" />
 
     <title>Achados Incríveis – Ofertas, Descontos e Melhores Achados Shopee</title>
     <meta name="description" content="Descubra ofertas selecionadas, cupons e achados imperdíveis na Shopee e perfumaria com produtos que realmente valem a pena.">
-    <meta name="keywords" content="achados incríveis, ofertas shopee, melhores achados, promoções, cupons de desconto, compras online, produtos baratos, perfumaria">
+    <meta name="keywords" content="achados incríveis, ofertas shopee, melhores achados, promoções, cupons de desconto, compras online, produtos baratos, perfumaria, simulador shopee">
     <meta name="robots" content="index, follow">
     <meta name="theme-color" content="#0b1220">
+    <link rel="manifest" href="manifest.json">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="Achados Incríveis">
 
     <!-- Open Graph / Facebook / WhatsApp -->
     <meta property="og:type" content="website">
@@ -40,7 +45,7 @@
     <link rel="icon" type="image/png" href="favicon.png">
     <link rel="apple-touch-icon" href="favicon.png">
 
-    <!-- Schema.org JSON-LD Structured Data -->
+    <!-- Schema.org JSON-LD Structured Data (WebSite + CollectionPage + FAQPage) -->
     <script type="application/ld+json">
     {
       "@context": "https://schema.org",
@@ -48,13 +53,14 @@
         {
           "@type": "WebSite",
           "name": "Achados Incríveis",
+          "url": "https://siteonlinebr.github.io/Achados-Incriveis/",
           "description": "Ofertas, descontos e produtos encontrados e selecionados que realmente valem a pena.",
           "inLanguage": "pt-BR",
           "potentialAction": {
             "@type": "SearchAction",
             "target": {
               "@type": "EntryPoint",
-              "urlTemplate": "/?busca={search_term_string}"
+              "urlTemplate": "https://siteonlinebr.github.io/Achados-Incriveis/?busca={search_term_string}"
             },
             "query-input": "required name=search_term_string"
           }
@@ -62,8 +68,46 @@
         {
           "@type": "CollectionPage",
           "name": "Achados Incríveis – Ofertas Selecionadas",
+          "url": "https://siteonlinebr.github.io/Achados-Incriveis/",
           "description": "Curadoria de achados e produtos promocionais na Shopee e perfumaria com preços e cupons imperdíveis.",
           "inLanguage": "pt-BR"
+        },
+        {
+          "@type": "FAQPage",
+          "mainEntity": [
+            {
+              "@type": "Question",
+              "name": "Como funcionam os achados e cupons deste site?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Selecionamos produtos com as melhores avaliações, menor preço e maior desconto na Shopee. Clicando em 'Ver Oferta', você é redirecionado de forma segura diretamente para o anúncio oficial no aplicativo ou site da Shopee com cupom ativado."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Como conseguir frete grátis na Shopee?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "A Shopee disponibiliza cupons de frete grátis todo mês no aplicativo. Acesse nossa Central de Cupons, copie o código ou ative o cupom para abater o valor do envio no carrinho."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Os perfumes da Eudora e Boticário são originais?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Sim, todos os perfumes e itens de beleza listados são 100% originais e novos. Você pode solicitar diretamente pelo WhatsApp para tirar dúvidas e combinar a entrega."
+              }
+            },
+            {
+              "@type": "Question",
+              "name": "Como recebo ofertas e cupons antes de todo mundo?",
+              "acceptedAnswer": {
+                "@type": "Answer",
+                "text": "Entre no nosso canal oficial no Telegram ou siga no Instagram @achadinhoos.incriveis6 onde postamos ofertas relâmpago diárias."
+              }
+            }
+          ]
         }
       ]
     }
@@ -71,6 +115,7 @@
 
     <link rel="stylesheet" href="style.css">
     <script src="produtos.js" defer></script>
+    <script src="cupons.js" defer></script>
     <script src="perfumes.js"></script>
     <script src="script.js" defer></script>
 </head>
@@ -91,6 +136,21 @@
                 </div>
 
                 <div class="header-actions">
+                    <a href="#cupons" class="header-nav-link" title="Ver Cupons de Desconto da Shopee">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
+                        <span>Cupons</span>
+                    </a>
+
+                    <a href="#calculadora" class="header-nav-link" title="Simulador de Economia Shopee">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="8" y1="6" x2="16" y2="6"/><line x1="16" y1="14" x2="16" y2="18"/><path d="M8 10h.01"/><path d="M12 10h.01"/><path d="M16 10h.01"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/></svg>
+                        <span>Calculadora</span>
+                    </a>
+
+                    <button type="button" id="pwaInstallHeaderBtn" class="header-nav-link pwa-header-btn" title="Salvar app no celular" style="display: none;">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+                        <span>Instalar App</span>
+                    </button>
+
                     <a href="https://www.instagram.com/achadinhoos.incriveis6/" target="_blank" rel="noopener noreferrer" class="social-header-btn instagram-btn" title="Seguir no Instagram @achadinhoos.incriveis6">
                         <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
                             <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
@@ -104,7 +164,7 @@
                         <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
                             <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .39z"/>
                         </svg>
-                        <span>Canal Telegram VIP</span>
+                        <span>Telegram VIP</span>
                     </a>
                 </div>
             </div>
@@ -126,8 +186,27 @@
 
             <p class="hero-text">
                 Ofertas, descontos e produtos encontrados e selecionados
-                para você aproveitar boas oportunidades.
+                para você economizar e aproveitar boas oportunidades.
             </p>
+
+            <!-- ACHADO EM DESTAQUE -->
+            <div class="featured-spotlight" id="featuredSpotlight">
+                <div class="spotlight-badge">🔥 ACHADO #01 EM DESTAQUE</div>
+                <div class="spotlight-body">
+                    <div class="spotlight-info">
+                        <h3>Parafusadeira Chave de Impacto 48V Sem Fio</h3>
+                        <p class="spotlight-desc">Motor potente de 800Nm, kit completo com soquetes e maleta de transporte para oficina.</p>
+                        <div class="spotlight-meta">
+                            <span class="spotlight-price">R$ 179,55</span>
+                            <span class="spotlight-rating">⭐ 4.8 (+1.4k avaliações)</span>
+                        </div>
+                    </div>
+                    <div class="spotlight-actions">
+                        <button type="button" class="spotlight-btn-review" data-id="1">Ver Análise</button>
+                        <a href="https://s.shopee.com.br/8Kp3CZ74mX" target="_blank" rel="noopener noreferrer" class="spotlight-btn-buy">Ir para Oferta</a>
+                    </div>
+                </div>
+            </div>
 
             <!-- BANNER CANAL VIP TELEGRAM -->
             <div class="telegram-callout">
@@ -156,7 +235,7 @@
                         <circle cx="11" cy="11" r="8"></circle>
                         <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
                     </svg>
-                    <input type="text" id="searchInput" placeholder="Buscar por produto (ex: parafusadeira, gato, caneca...)" autocomplete="off">
+                    <input type="text" id="searchInput" placeholder="Buscar por produto ou código do vídeo (ex: #01, #08, parafusadeira...)" autocomplete="off">
                     <button type="button" id="clearSearchBtn" class="clear-search-btn" title="Limpar busca" style="display: none;">&times;</button>
                 </div>
 
@@ -171,6 +250,7 @@
                 </div>
             </div>
 
+            <!-- FILTRO DE CATEGORIAS -->
             <div class="categories-list" id="categoriesList">
                 <button class="category active" data-category="Todos">Todos</button>
                 <button class="category" data-category="Ferramentas">Ferramentas</button>
@@ -183,6 +263,30 @@
                 </button>
             </div>
 
+            <!-- SUGESTÕES RÁPIDAS (IDEIAS DIRETAS) -->
+            <div class="quick-suggestions-container" id="quickSuggestions">
+                <span class="quick-suggestions-label">💡 Ideias Rápidas:</span>
+                <div class="quick-suggestions-chips">
+                    <button type="button" class="suggestion-chip" data-preset="baratinhos">💰 Baratinhos até R$ 30</button>
+                    <button type="button" class="suggestion-chip" data-preset="descontos">⚡ Super Descontos</button>
+                    <button type="button" class="suggestion-chip" data-preset="casa">🏠 Casa & Cozinha</button>
+                    <button type="button" class="suggestion-chip" data-preset="presentes">🎁 Ideias de Presente</button>
+                    <button type="button" class="suggestion-chip" data-preset="oficina">🔧 Oficina & Ferramentas</button>
+                </div>
+            </div>
+
+            <!-- FILTRO POR FAIXA DE PREÇO -->
+            <div class="price-chips-container" id="priceChipsContainer">
+                <span class="price-chips-label">Faixa de Preço:</span>
+                <div class="price-chips-list">
+                    <button type="button" class="price-chip active" data-price="todos">Todos</button>
+                    <button type="button" class="price-chip" data-price="30">Até R$ 30</button>
+                    <button type="button" class="price-chip" data-price="50">Até R$ 50</button>
+                    <button type="button" class="price-chip" data-price="100">Até R$ 100</button>
+                    <button type="button" class="price-chip" data-price="100+">Acima de R$ 100</button>
+                </div>
+            </div>
+
             <div class="filter-status">
                 <span id="resultsCount">Carregando achados...</span>
             </div>
@@ -190,6 +294,7 @@
         </div>
     </section>
 
+    <!-- SEÇÃO DE PRODUTOS -->
     <section class="products">
         <div class="container">
 
@@ -212,25 +317,277 @@
         </div>
     </section>
 
-    <section class="products perfumes">
-
-    <div class="container">
-
-        <div class="section-title">
-            <p>PERFUMES & BELEZA</p>
-            <h2>Perfumes selecionados</h2>
-            <p class="section-subtitle">Produtos 100% originais. Fale diretamente no WhatsApp para tirar dúvidas, combinar entrega ou pedir.</p>
+    <!-- VISTOS RECENTEMENTE -->
+    <section class="recent-views-section" id="recentViewsSection" style="display: none;">
+        <div class="container">
+            <div class="recent-views-header">
+                <div>
+                    <span class="recent-tag">HISTÓRICO</span>
+                    <h3>Vistos Recentemente</h3>
+                </div>
+                <button type="button" id="clearRecentBtn" class="clear-recent-btn">Limpar histórico</button>
+            </div>
+            <div class="recent-views-track" id="recentViewsTrack"></div>
         </div>
+    </section>
 
-        <div class="perfumes-grid"></div>
+    <!-- CENTRAL DE CUPONS SHOPEE -->
+    <section class="cupons-section" id="cupons">
+        <div class="container">
 
-    </div>
+            <div class="section-title">
+                <p>ECONOMIA EXTRA</p>
+                <h2>Central de Cupons Shopee</h2>
+                <p class="section-subtitle">Copie o código ou resgate diretamente no aplicativo da Shopee para economizar no frete e garantir descontos adicionais.</p>
+            </div>
 
+            <div class="cupons-grid" id="cuponsGrid"></div>
+
+        </div>
+    </section>
+
+    <!-- FERRAMENTA INTERATIVA: CALCULADORA DE ECONOMIA SHOPEE -->
+    <section class="calculator-section" id="calculadora">
+        <div class="container">
+
+            <div class="section-title">
+                <p class="calc-badge">⚡ FERRAMENTA INTERATIVA</p>
+                <h2>Simulador de Economia Shopee</h2>
+                <p class="section-subtitle">Simule quanto você economiza combinando cupom de frete, desconto percentual e moedas Shopee na sua compra.</p>
+            </div>
+
+            <div class="calculator-wrapper">
+                
+                <!-- FORMULÁRIO DO SIMULADOR -->
+                <div class="calculator-form">
+                    
+                    <div class="calc-field">
+                        <label for="calcCartValue">Valor Total dos Produtos no Carrinho (R$)</label>
+                        <div class="calc-input-row">
+                            <span class="calc-input-prefix">R$</span>
+                            <input type="number" id="calcCartValue" value="120.00" min="1" step="0.50" placeholder="Ex: 120.00">
+                        </div>
+                        <div class="calc-quick-vals">
+                            <button type="button" class="quick-val-btn" data-val="50">R$ 50</button>
+                            <button type="button" class="quick-val-btn" data-val="80">R$ 80</button>
+                            <button type="button" class="quick-val-btn active" data-val="120">R$ 120</button>
+                            <button type="button" class="quick-val-btn" data-val="200">R$ 200</button>
+                        </div>
+                    </div>
+
+                    <div class="calc-field">
+                        <label for="calcCouponSelect">Cupom de Desconto Shopee</label>
+                        <select id="calcCouponSelect" class="calc-select">
+                            <option value="0">Nenhum cupom de desconto (0%)</option>
+                            <option value="5">Cupom 5% OFF (Até R$ 10)</option>
+                            <option value="10" selected>Cupom 10% OFF (Até R$ 20)</option>
+                            <option value="15">Cupom 15% OFF (Até R$ 30)</option>
+                            <option value="fixo-10">Cupom Fixo R$ 10 OFF</option>
+                            <option value="fixo-20">Cupom Fixo R$ 20 OFF</option>
+                        </select>
+                    </div>
+
+                    <div class="calc-field">
+                        <label class="calc-checkbox-label">
+                            <input type="checkbox" id="calcShippingToggle" checked>
+                            <span class="calc-checkbox-custom"></span>
+                            <span class="calc-checkbox-text">
+                                <strong>Aplicar Cupom de Frete Grátis</strong>
+                                <small>Economia estimada de até R$ 20,00 no envio</small>
+                            </span>
+                        </label>
+                    </div>
+
+                    <div class="calc-field">
+                        <div class="calc-label-row">
+                            <label for="calcCoinsRange">Moedas Shopee para abater</label>
+                            <span class="calc-coins-badge" id="calcCoinsValBadge">100 moedas (= R$ 1,00)</span>
+                        </div>
+                        <input type="range" id="calcCoinsRange" min="0" max="500" step="50" value="100" class="calc-range">
+                        <small class="calc-hint">Cada 100 moedas Shopee equivalem a R$ 1,00 de desconto no carrinho.</small>
+                    </div>
+
+                </div>
+
+                <!-- CARD DE RESULTADO DA SIMULAÇÃO -->
+                <div class="calculator-results">
+                    <div class="results-header">
+                        <span class="results-tag">SEU RESUMO DE ECONOMIA</span>
+                        <div class="savings-highlight">
+                            <span class="savings-label">Você economiza até:</span>
+                            <span class="savings-amount" id="resSavingsAmount">R$ 33,00</span>
+                            <span class="savings-percent" id="resSavingsPercent">(27% de economia)</span>
+                        </div>
+                    </div>
+
+                    <div class="results-breakdown">
+                        <div class="breakdown-row">
+                            <span>Valor original:</span>
+                            <strong id="resOriginalVal">R$ 140,00</strong>
+                        </div>
+                        <div class="breakdown-row discount-row">
+                            <span>Desconto de Frete Grátis:</span>
+                            <strong id="resShippingDiscount">- R$ 20,00</strong>
+                        </div>
+                        <div class="breakdown-row discount-row">
+                            <span>Desconto do Cupom:</span>
+                            <strong id="resCouponDiscount">- R$ 12,00</strong>
+                        </div>
+                        <div class="breakdown-row discount-row">
+                            <span>Abatimento com Moedas:</span>
+                            <strong id="resCoinsDiscount">- R$ 1,00</strong>
+                        </div>
+                        <div class="breakdown-divider"></div>
+                        <div class="breakdown-row total-row">
+                            <span>Total a Pagar Estimado:</span>
+                            <strong id="resFinalPrice">R$ 107,00</strong>
+                        </div>
+                    </div>
+
+                    <div class="results-actions">
+                        <a href="https://s.shopee.com.br/8Kp3CZ74mX" target="_blank" rel="noopener noreferrer" class="calc-claim-btn" title="Ir para a Shopee resgatar cupons">
+                            <span>RESGATAR CUPONS NA SHOPEE</span>
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+                        </a>
+                        <button type="button" id="calcShareWhatsBtn" class="calc-share-btn" title="Copiar e compartilhar simulação no WhatsApp">
+                            <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.44 0-2.86-.38-4.11-1.09l-.29-.17-3.12.82.83-3.04-.19-.31a8.196 8.196 0 0 1-1.26-4.44c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.71 4.31 3.8.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29z"/></svg>
+                            <span>Mandar Simulação no WhatsApp</span>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE PERFUMES & BELEZA -->
+    <section class="products perfumes">
+        <div class="container">
+
+            <div class="section-title">
+                <p>PERFUMES & BELEZA</p>
+                <h2>Perfumes selecionados</h2>
+                <p class="section-subtitle">Produtos 100% originais. Fale diretamente no WhatsApp para tirar dúvidas, combinar entrega ou pedir.</p>
+            </div>
+
+            <div class="perfumes-grid"></div>
+
+        </div>
+    </section>
+
+    <!-- SEÇÃO DE DÚVIDAS FREQUENTES (FAQ ACCORDION - SEO ORGÂNICO) -->
+    <section class="faq-section" id="faq">
+        <div class="container">
+
+            <div class="section-title">
+                <p>TIRE SUAS DÚVIDAS</p>
+                <h2>Perguntas Frequentes</h2>
+                <p class="section-subtitle">Tudo o que você precisa saber sobre as compras, cupons e segurança dos achados selecionados.</p>
+            </div>
+
+            <div class="faq-accordion">
+                
+                <div class="faq-item">
+                    <button type="button" class="faq-question">
+                        <span>Como funcionam os achados e links postados aqui?</span>
+                        <svg class="faq-chevron" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Fazemos uma curadoria diária filtrando os produtos mais bem avaliados, com o melhor custo-benefício e menor preço da Shopee. Ao clicar em "Ver Oferta", você é levado com segurança direto para a página oficial do produto no app ou site da Shopee.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question">
+                        <span>Como utilizar os cupons de frete grátis da Shopee?</span>
+                        <svg class="faq-chevron" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>A Shopee libera cupons de frete grátis regularmente para os usuários. Na nossa <a href="#cupons">Central de Cupons</a>, clique no botão "Ativar" para resgatar os cupons diretamente na sua conta Shopee. No momento de fechar o pedido, selecione o cupom de frete disponível no seu carrinho.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question">
+                        <span>Os produtos de perfumaria são originais?</span>
+                        <svg class="faq-chevron" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim, 100% originais e lacrados das marcas O Boticário e Eudora. Ao clicar no botão do WhatsApp de qualquer perfume, você fala diretamente conosco para verificar disponibilidade, formas de pagamento e frete com envio rápido.</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question">
+                        <span>Como receber novos achados e cupons em primeira mão?</span>
+                        <svg class="faq-chevron" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Você pode entrar gratuitamente no nosso <a href="https://t.me/+sRkNzavwxWw1YzNh" target="_blank" rel="noopener noreferrer">Canal VIP no Telegram</a> ou seguir nosso Instagram oficial <a href="https://www.instagram.com/achadinhoos.incriveis6/" target="_blank" rel="noopener noreferrer">@achadinhoos.incriveis6</a>. Lá postamos descontos relâmpago que duram poucas horas!</p>
+                    </div>
+                </div>
+
+                <div class="faq-item">
+                    <button type="button" class="faq-question">
+                        <span>Posso salvar o Achados Incríveis como app no meu celular?</span>
+                        <svg class="faq-chevron" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                    </button>
+                    <div class="faq-answer">
+                        <p>Sim! No Chrome para Android, clique nos três pontinhos do navegador e escolha "Adicionar à tela inicial" (ou use o botão "Instalar App" no topo). No iPhone (Safari), clique no botão de compartilhar (ícone de quadrado com seta para cima) e selecione "Adicionar à Tela de Início".</p>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
     </section>
 
     </main>
 
+    <!-- MODAL DE DETALHES / ANÁLISE RÁPIDA -->
+    <div id="productModal" class="modal-backdrop" aria-hidden="true" style="display: none;">
+        <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+            <button type="button" class="modal-close-btn" id="modalCloseBtn" aria-label="Fechar">&times;</button>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <!-- TOAST NOTIFICATION -->
     <div id="toast" class="toast" role="status" aria-live="polite">Link copiado com sucesso!</div>
+
+    <!-- FLOATING ACTION BUTTONS (FAB) -->
+    <div class="fab-container">
+        <!-- Compartilhar site inteiro no WhatsApp -->
+        <a href="https://api.whatsapp.com/send?text=Olha%20esse%20site%20com%20os%20melhores%20achados%2C%20cupons%20e%20ofertas%20da%20Shopee%3A%20https%3A%2F%2Fsiteonlinebr.github.io%2FAchados-Incriveis%2F" target="_blank" rel="noopener noreferrer" class="fab-btn fab-whatsapp" title="Recomendar Achados Incríveis no WhatsApp">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42a8.225 8.225 0 0 1 2.41 5.83c0 4.54-3.7 8.24-8.24 8.24-1.44 0-2.86-.38-4.11-1.09l-.29-.17-3.12.82.83-3.04-.19-.31a8.196 8.196 0 0 1-1.26-4.44c0-4.54 3.7-8.24 8.24-8.24m4.52 11.66c-.25-.13-1.47-.72-1.7-.81-.23-.08-.39-.13-.56.13-.17.25-.64.81-.79.97-.14.17-.29.19-.54.06-.25-.13-1.06-.39-2.03-1.25-.75-.67-1.26-1.5-1.41-1.75-.14-.25-.02-.39.11-.51.11-.11.25-.29.38-.44.13-.14.17-.25.25-.42.08-.17.04-.31-.02-.44-.06-.13-.56-1.34-.76-1.84-.2-.49-.4-.42-.56-.43h-.48c-.17 0-.44.06-.67.31-.23.25-.88.86-.88 2.1 0 1.24.9 2.44 1.03 2.61.13.17 1.78 2.71 4.31 3.8.6.26 1.07.41 1.44.53.61.19 1.16.17 1.6.1.49-.07 1.47-.6 1.68-1.18.21-.58.21-1.08.15-1.18-.06-.1-.23-.17-.48-.29z"/>
+            </svg>
+            <span class="fab-label">Indicar no WhatsApp</span>
+        </a>
+
+        <!-- Voltar ao Topo -->
+        <button type="button" id="backToTopBtn" class="fab-btn fab-top" title="Voltar ao topo" style="display: none;">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5">
+                <polyline points="18 15 12 9 6 15"></polyline>
+            </svg>
+        </button>
+    </div>
+
+    <!-- BANNER PWA MOBILE (ADICIONAR À TELA INICIAL) -->
+    <div id="pwaBanner" class="pwa-banner" style="display: none;">
+        <div class="pwa-banner-content">
+            <img src="favicon.png" alt="Achados Incríveis" class="pwa-banner-icon">
+            <div class="pwa-banner-text">
+                <strong>Salvar Achados Incríveis</strong>
+                <p>Adicione à tela inicial do seu celular para ver ofertas em 1 clique.</p>
+            </div>
+        </div>
+        <div class="pwa-banner-actions">
+            <button type="button" id="pwaInstallActionBtn" class="pwa-banner-install-btn">Instalar</button>
+            <button type="button" id="pwaCloseBannerBtn" class="pwa-banner-close-btn">&times;</button>
+        </div>
+    </div>
 
     <footer class="footer">
         <div class="container">
