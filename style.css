@@ -1457,6 +1457,26 @@ body {
     background: #334155;
 }
 
+.modal-telegram-btn {
+    padding: 13px 16px;
+    background: #0284c7;
+    border: 1px solid #38bdf8;
+    color: #ffffff;
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    transition: all 0.15s ease;
+}
+
+.modal-telegram-btn:hover {
+    background: #0369a1;
+    transform: translateY(-1px);
+}
+
 @media (max-width: 900px) {
     .cupons-grid {
         grid-template-columns: repeat(2, 1fr);

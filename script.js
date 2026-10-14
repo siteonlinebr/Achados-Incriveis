@@ -178,12 +178,33 @@ function fallbackCopiar(texto, mensagemSucesso = "Copiado com sucesso!") {
 }
 
 // ==========================================================================
-// COMPARTILHAMENTO DE OFERTA NO WHATSAPP
+// COMPARTILHAMENTO DE OFERTA NO WHATSAPP E TELEGRAM
 // ==========================================================================
 function gerarTextoCompartilhamento(produto) {
     const precoFormatado = formatarPreco(produto.preco);
     const precoAntigoFormatado = produto.precoAntigo ? ` (De ${formatarPreco(produto.precoAntigo)})` : '';
     return `🔥 *Achado Recomendado no Achados Incríveis!*\n\n📦 *${produto.nome}*\n💰 Por apenas *${precoFormatado}*${precoAntigoFormatado}\n\n🛒 Link direto com desconto: ${produto.link}\n\n✨ Veja mais ofertas e cupons em: https://siteonlinebr.github.io/Achados-Incriveis/`;
+}
+
+function gerarTextoTelegram(produto) {
+    const precoFormatado = formatarPreco(produto.preco);
+    const precoAntigo = produto.precoAntigo ? `~~De ${formatarPreco(produto.precoAntigo)}~~\n` : '';
+    const desconto = calcularDesconto(produto.precoAntigo, produto.preco);
+    const tagDesconto = desconto > 0 ? ` 🔥 *${desconto}% DE DESCONTO!*` : '';
+    const pro = (produto.pros && produto.pros.length) ? `\n✅ *Destaque:* ${produto.pros[0]}` : '';
+
+    return `🚨 *ACHADO IMPERDÍVEL NA SHOPEE!*${tagDesconto}
+
+📦 *${produto.nome}*
+
+⭐ Avaliação: *${produto.avaliacao || '4.8'}* (${produto.totalAvaliacoes || '1k+'} avaliações confirmadas)
+${precoAntigo}💰 *Por apenas: ${precoFormatado}* ${produto.parcelamento ? `\n💳 Em até ${produto.parcelamento}` : ''}${pro}
+
+🛒 *Compre com desconto pelo link oficial:*
+👉 ${produto.link}
+
+🏷️ *Dica:* Resgate seus cupons de frete grátis no app da Shopee antes de finalizar!
+✨ Mais achados e cupons: https://siteonlinebr.github.io/Achados-Incriveis/`;
 }
 
 function compartilharNoWhatsApp(produto) {
@@ -209,6 +230,8 @@ function filtrarEOrdenarProdutos() {
         } else if (activeCategory !== "Todos") {
             if (activeCategory === "Casa") {
                 bateCategoria = catProduto.includes("casa");
+            } else if (activeCategory === "Beleza") {
+                bateCategoria = catProduto.includes("beleza") || catProduto.includes("presente") || catProduto.includes("perfume");
             } else {
                 bateCategoria = catProduto === activeCategory.toLowerCase();
             }
@@ -593,6 +616,12 @@ function abrirModalProduto(id) {
                         </svg>
                         <span>WhatsApp</span>
                     </a>
+                    <button type="button" class="modal-telegram-btn" data-id="${produto.id}" title="Copiar Post pronto para o Telegram com gatilhos e formatação">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .39z"/>
+                        </svg>
+                        <span>Post Telegram</span>
+                    </button>
                 </div>
             </div>
         </div>
@@ -729,13 +758,24 @@ if (quickSuggestions) {
             activeCategory = "Todos";
             currentSort = "maior-desconto";
             if (sortSelect) sortSelect.value = "maior-desconto";
+        } else if (preset === "natal") {
+            activePrice = "todos";
+            activeCategory = "Todos";
+            searchQuery = "natal";
+            if (searchInput) searchInput.value = "natal";
+            if (clearSearchBtn) clearSearchBtn.style.display = "block";
+            currentSort = "padrao";
+        } else if (preset === "pets") {
+            activePrice = "todos";
+            activeCategory = "Pets";
+            currentSort = "padrao";
         } else if (preset === "casa") {
             activePrice = "todos";
             activeCategory = "Casa";
             currentSort = "padrao";
         } else if (preset === "presentes") {
-            activePrice = "50";
-            activeCategory = "Todos";
+            activePrice = "todos";
+            activeCategory = "Beleza";
             currentSort = "padrao";
         } else if (preset === "oficina") {
             activePrice = "todos";
@@ -1024,6 +1064,20 @@ if (productModal) {
     productModal.addEventListener("click", (e) => {
         if (e.target === productModal) {
             fecharModal();
+            return;
+        }
+
+        const teleBtn = e.target.closest(".modal-telegram-btn");
+        if (teleBtn) {
+            e.preventDefault();
+            e.stopPropagation();
+            const id = teleBtn.getAttribute("data-id");
+            const prod = produtos.find(p => p.id === Number(id));
+            if (prod) {
+                const texto = gerarTextoTelegram(prod);
+                copiarParaAreaTransferencia(texto, "Post para o Telegram copiado com sucesso! ✈️");
+            }
+            return;
         }
     });
 }

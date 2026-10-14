@@ -206,5 +206,81 @@ const produtos = [
         pros: ["Tanque de 6L para várias horas de ar fresco", "Consome apenas 60W (muito mais econômico que ar-condicionado)"],
         contra: "Para ar mais gelado, recomenda-se colocar água com gelo",
         resumo: "Solução prática e econômica para aliviar o calor e hidratar o ar em dias secos."
+    },
+
+    {
+        id: 12,
+        codigo: "#12",
+        nome: "Parafusadeira Furadeira 25V Nakasaki Sem Fio a Bateria Profissional Kit Completo com Maleta e Acessórios",
+        categoria: "Ferramentas",
+        imagem: "parafusadeira-nakasaki.jpg",
+        preco: 89.99,
+        precoNormal: 149.90,
+        precoAntigo: 299.97,
+        cupom: "70% OFF",
+        parcelamento: "10x R$ 8,99",
+        link: "https://s.shopee.com.br/60SMZIthDr",
+        avaliacao: 4.8,
+        totalAvaliacoes: "1.5k",
+        pros: ["Mais de 70% de desconto no link direto oficial", "Acompanha maleta rígida, bateria 25V, carregador e kit com soquetes e brocas"],
+        contra: "Para concreto maciço ou alvenaria pesada, recomenda-se martelete apropriado",
+        resumo: "Campeã absoluta de vendas com desconto imbatível: ferramenta sem fio 25V completa para consertos, marcenaria e montagens em casa."
+    },
+
+    {
+        id: 13,
+        codigo: "#13",
+        nome: "Comedouro e Bebedouro Automático para Gatos e Cães Premium 1L Jelplast",
+        categoria: "Pets",
+        imagem: "comedouro-jelplast.jpg",
+        preco: 60.90,
+        precoNormal: null,
+        precoAntigo: 79.90,
+        cupom: null,
+        parcelamento: "6x R$ 10,15",
+        link: "https://shopee.com.br/product/578920731/46560301686?utm_source=an_18313851064&utm_medium=affiliates&mmp_pid=an_18313851064",
+        avaliacao: 5.0,
+        totalAvaliacoes: "150+",
+        pros: ["Sistema gravitacional que repõe água e ração automaticamente", "Capacidade de 1 litro ideal para quem passa o dia fora"],
+        contra: "Fazer a higienização do reservatório semanalmente com água corrente",
+        resumo: "Praticidade absoluta para os tutores e água fresca sempre limpa para o pet durante o dia todo sem risco de tombamento."
+    },
+
+    {
+        id: 14,
+        codigo: "#14",
+        nome: "Árvore de Natal Tradicional Nevada 1,80m com 320 Galhos e Base Metálica Reforçada",
+        categoria: "Casa e Decoração",
+        imagem: "arvore-natal-nevada.jpg",
+        preco: 89.90,
+        precoNormal: 129.90,
+        precoAntigo: 149.90,
+        cupom: "OFERTA NATAL",
+        parcelamento: "12x R$ 9,18",
+        link: "https://s.shopee.com.br/8Kp3CZ74mX",
+        avaliacao: 4.9,
+        totalAvaliacoes: "2.3k",
+        pros: ["320 galhos cheios com acabamento nevado nas pontas", "Base em ferro com pés emborrachados de alta estabilidade"],
+        contra: "Na primeira montagem, dedique alguns minutos para abrir e afofar bem os ramos",
+        resumo: "O achado natalino perfeito com visual denso e imponente para transformar a decoração de fim de ano pagando preço de fábrica."
+    },
+
+    {
+        id: 15,
+        codigo: "#15",
+        nome: "Perfume com Feromônios Concentrado Unissex Aura Pheromone Eau de Parfum 50ml",
+        categoria: "Beleza e Presentes",
+        imagem: "perfume-feromonio.jpg",
+        preco: 39.90,
+        precoNormal: null,
+        precoAntigo: 79.90,
+        cupom: "50% OFF",
+        parcelamento: "5x R$ 7,98",
+        link: "https://s.shopee.com.br/8Kp3CZ74mX",
+        avaliacao: 4.7,
+        totalAvaliacoes: "3.8k",
+        pros: ["Fragrância magnética formulada para alta atração e fixação prolongada", "Frasco de luxo em vidro âmbar com válvula spray dourada"],
+        contra: "Fragrância concentrada, duas a três borrifadas já projetam muito bem",
+        resumo: "Sensação viral da internet: fragrância afrodisíaca envolvente com notas marcantes para encontros especiais e ocasiões marcantes."
     }
 ];
