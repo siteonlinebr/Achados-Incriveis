@@ -229,11 +229,17 @@ function filtrarEOrdenarProdutos() {
             bateCategoria = favs.includes(produto.nome);
         } else if (activeCategory !== "Todos") {
             if (activeCategory === "Casa") {
-                bateCategoria = catProduto.includes("casa");
+                bateCategoria = catProduto.includes("casa") || catProduto.includes("festa") || catProduto.includes("lazer") || catProduto.includes("utilidade") || catProduto.includes("decoração") || catProduto.includes("natal");
             } else if (activeCategory === "Beleza") {
-                bateCategoria = catProduto.includes("beleza") || catProduto.includes("presente") || catProduto.includes("perfume");
+                bateCategoria = catProduto.includes("beleza") || catProduto.includes("presente") || catProduto.includes("perfume") || catProduto.includes("saúde");
+            } else if (activeCategory === "Moda") {
+                bateCategoria = catProduto.includes("moda") || catProduto.includes("roupa") || catProduto.includes("calçado") || catProduto.includes("meia") || catProduto.includes("escolar");
+            } else if (activeCategory === "Eletrônicos") {
+                bateCategoria = catProduto.includes("eletrônico") || catProduto.includes("acessório") || catProduto.includes("smartwatch") || catProduto.includes("gadget") || catProduto.includes("fone");
+            } else if (activeCategory === "Ferramentas") {
+                bateCategoria = catProduto.includes("ferramenta") || catProduto.includes("oficina");
             } else {
-                bateCategoria = catProduto === activeCategory.toLowerCase();
+                bateCategoria = catProduto.includes(activeCategory.toLowerCase());
             }
         }
 
@@ -307,6 +313,20 @@ function renderizarProdutos() {
         } else {
             resultsCountEl.textContent = `${lista.length} achados encontrados`;
         }
+
+        const catShopeeMap = {
+            "Pets": { nome: "Pets", link: "https://s.shopee.com.br/5AtGE6lGLR" },
+            "Beleza": { nome: "Beleza", link: "https://s.shopee.com.br/50Zq1nltgO" },
+            "Casa": { nome: "Casa", link: "https://s.shopee.com.br/1gJO3fyaRY" },
+            "Ferramentas": { nome: "Ferramentas", link: "https://s.shopee.com.br/8Kp3CZ74mX" },
+            "Moda": { nome: "Moda", link: "https://s.shopee.com.br/3LRc2jsF3y" },
+            "Brinquedos": { nome: "Brinquedos", link: "https://s.shopee.com.br/4qGPpUmX1P" }
+        };
+
+        if (catShopeeMap[activeCategory]) {
+            const catInfo = catShopeeMap[activeCategory];
+            resultsCountEl.innerHTML += ` <a href="${catInfo.link}" target="_blank" rel="noopener noreferrer" class="cat-shopee-external-link">Ver todo o departamento de ${catInfo.nome} na Shopee ↗</a>`;
+        }
     }
 
     // Exibe ou oculta estado vazio
@@ -343,7 +363,7 @@ function renderizarProdutos() {
                         <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                     </svg>
                 </button>
-                <img src="${produto.imagem}" alt="${produto.nome}" loading="lazy">
+                <img src="${produto.imagem}" alt="${produto.nome}" loading="lazy" onerror="this.onerror=null; this.src='favicon.png';">
                 ${desconto > 0 ? `<span class="image-discount-badge">-${desconto}%</span>` : ""}
             </div>
 
@@ -477,6 +497,48 @@ function renderizarCupons() {
         `;
 
         cuponsGrid.appendChild(card);
+    });
+}
+
+// ==========================================================================
+// DEPARTAMENTOS E CATEGORIAS OFICIAIS SHOPEE
+// ==========================================================================
+function renderizarDepartamentos() {
+    const departamentosGrid = document.getElementById("departamentosGrid");
+    if (!departamentosGrid || typeof categoriasShopee === "undefined") return;
+
+    departamentosGrid.innerHTML = "";
+
+    categoriasShopee.forEach((cat) => {
+        const card = document.createElement("a");
+        card.href = cat.link;
+        card.target = "_blank";
+        card.rel = "noopener noreferrer";
+        card.className = "departamento-card";
+        card.title = `Explorar ofertas de ${cat.nome} na Shopee`;
+
+        card.innerHTML = `
+            <div>
+                <div class="dept-header-row">
+                    <div class="dept-icon-box">${cat.icone}</div>
+                    <span class="dept-badge">${cat.badge}</span>
+                </div>
+                <h3 class="dept-title">${cat.nome}</h3>
+                <p class="dept-desc">${cat.descricao}</p>
+            </div>
+            <div class="dept-footer-row">
+                <span class="dept-comissao">
+                    <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Ofertas Oficiais Shopee
+                </span>
+                <span class="dept-cta">
+                    Explorar
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14"></path><path d="M12 5l7 7-7 7"></path></svg>
+                </span>
+            </div>
+        `;
+
+        departamentosGrid.appendChild(card);
     });
 }
 
@@ -1134,6 +1196,7 @@ function inicializarApp() {
     }
 
     renderizarProdutos();
+    renderizarDepartamentos();
     renderizarCupons();
     renderizarPerfumes();
     renderizarVistosRecentemente();

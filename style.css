@@ -2104,17 +2104,55 @@ body {
     gap: 10px;
 }
 
+.fab-social-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+    width: 100%;
+}
+
 .fab-btn {
     display: flex;
     align-items: center;
     gap: 8px;
-    padding: 12px 18px;
+    padding: 11px 16px;
     border-radius: 999px;
     text-decoration: none;
     cursor: pointer;
     box-shadow: 0 4px 18px rgba(0, 0, 0, 0.4);
-    transition: all 0.2s ease;
+    transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     border: none;
+}
+
+.fab-social {
+    color: #ffffff;
+    font-size: 13px;
+    font-weight: 700;
+}
+
+.fab-instagram {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    color: #ffffff;
+    box-shadow: 0 4px 18px rgba(220, 39, 67, 0.35);
+}
+
+.fab-instagram:hover {
+    filter: brightness(1.12);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(220, 39, 67, 0.55);
+}
+
+.fab-telegram {
+    background: #229ED9;
+    color: #ffffff;
+    box-shadow: 0 4px 18px rgba(34, 158, 217, 0.35);
+}
+
+.fab-telegram:hover {
+    background: #1b8ec3;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(34, 158, 217, 0.55);
 }
 
 .fab-whatsapp {
@@ -2287,5 +2325,152 @@ body {
         text-align: center;
     }
 }
+
+/* ==========================================================================
+   DEPARTAMENTOS E CATEGORIAS OFICIAIS SHOPEE
+   ========================================================================== */
+.departamentos-section {
+    padding: 60px 0;
+    background: #090f1b;
+    border-top: 1px solid #1e293b;
+    border-bottom: 1px solid #1e293b;
+}
+
+.departamentos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    gap: 16px;
+    margin-top: 28px;
+}
+
+.departamento-card {
+    background: #111a2e;
+    border: 1px solid #1e293b;
+    border-radius: 12px;
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    text-decoration: none;
+    color: #f8fafc;
+    transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    overflow: hidden;
+}
+
+.departamento-card:hover {
+    border-color: #38bdf8;
+    background: #14213d;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(14, 165, 233, 0.16);
+}
+
+.dept-header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 12px;
+}
+
+.dept-icon-box {
+    width: 44px;
+    height: 44px;
+    border-radius: 10px;
+    background: rgba(56, 189, 248, 0.12);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 22px;
+    transition: transform 0.2s ease;
+}
+
+.departamento-card:hover .dept-icon-box {
+    transform: scale(1.1);
+}
+
+.dept-badge {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    background: rgba(238, 77, 45, 0.15);
+    color: #ff5722;
+    border: 1px solid rgba(238, 77, 45, 0.35);
+}
+
+.dept-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: #f8fafc;
+    margin-bottom: 6px;
+}
+
+.dept-desc {
+    font-size: 12px;
+    color: #94a3b8;
+    line-height: 1.45;
+    margin-bottom: 16px;
+    flex-grow: 1;
+}
+
+.dept-footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.dept-comissao {
+    font-size: 11px;
+    font-weight: 600;
+    color: #4ade80;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.dept-cta {
+    font-size: 12px;
+    font-weight: 700;
+    color: #38bdf8;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    transition: gap 0.2s ease;
+}
+
+.departamento-card:hover .dept-cta {
+    gap: 8px;
+    color: #67e8f9;
+}
+
+.cat-shopee-external-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(238, 77, 45, 0.12);
+    border: 1px solid rgba(238, 77, 45, 0.3);
+    color: #ff5722;
+    padding: 3px 12px;
+    border-radius: 999px;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 600;
+    margin-left: 10px;
+    transition: all 0.2s ease;
+}
+
+.cat-shopee-external-link:hover {
+    background: #ee4d2d;
+    color: #ffffff;
+    border-color: #ee4d2d;
+    transform: translateY(-1px);
+}
+
+
 
 

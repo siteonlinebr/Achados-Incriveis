@@ -115,6 +115,7 @@
 
     <link rel="stylesheet" href="style.css">
     <script src="produtos.js" defer></script>
+    <script src="categorias.js" defer></script>
     <script src="cupons.js" defer></script>
     <script src="perfumes.js"></script>
     <script src="script.js" defer></script>
@@ -136,6 +137,11 @@
                 </div>
 
                 <div class="header-actions">
+                    <a href="#departamentos" class="header-nav-link" title="Ver Ofertas Oficiais por Departamento da Shopee">
+                        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+                        <span>Departamentos</span>
+                    </a>
+
                     <a href="#cupons" class="header-nav-link" title="Ver Cupons de Desconto da Shopee">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><circle cx="6" cy="6" r="3"/><circle cx="6" cy="18" r="3"/><line x1="20" y1="4" x2="8.12" y2="15.88"/><line x1="14.47" y1="14.48" x2="20" y2="20"/><line x1="8.12" y1="8.12" x2="12" y2="12"/></svg>
                         <span>Cupons</span>
@@ -150,22 +156,6 @@
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                         <span>Instalar App</span>
                     </button>
-
-                    <a href="https://www.instagram.com/achadinhoos.incriveis6/" target="_blank" rel="noopener noreferrer" class="social-header-btn instagram-btn" title="Seguir no Instagram @achadinhoos.incriveis6">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
-                            <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
-                            <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
-                        </svg>
-                        <span>@achadinhoos.incriveis6</span>
-                    </a>
-
-                    <a href="https://t.me/+sRkNzavwxWw1YzNh" target="_blank" rel="noopener noreferrer" class="social-header-btn telegram-btn" title="Entrar no Grupo VIP do Telegram">
-                        <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
-                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .39z"/>
-                        </svg>
-                        <span>Telegram VIP</span>
-                    </a>
                 </div>
             </div>
 
@@ -259,6 +249,7 @@
                 <button class="category" data-category="Beleza">Beleza & Perfumes</button>
                 <button class="category" data-category="Brinquedos">Brinquedos</button>
                 <button class="category" data-category="Moda">Moda</button>
+                <button class="category" data-category="Eletrônicos">Eletrônicos</button>
                 <button class="category fav-category" data-category="Favoritos" id="favFilterBtn">
                     ❤️ Favoritos (<span id="favCount">0</span>)
                 </button>
@@ -331,6 +322,19 @@
                 <button type="button" id="clearRecentBtn" class="clear-recent-btn">Limpar histórico</button>
             </div>
             <div class="recent-views-track" id="recentViewsTrack"></div>
+        </div>
+    </section>
+
+    <!-- DEPARTAMENTOS & CATEGORIAS OFICIAIS SHOPEE -->
+    <section class="departamentos-section" id="departamentos">
+        <div class="container">
+            <div class="section-title">
+                <p>OFERTAS POR DEPARTAMENTO</p>
+                <h2>Departamentos Oficiais Shopee</h2>
+                <p class="section-subtitle">Explore as melhores ofertas selecionadas em cada categoria oficial da Shopee com frete grátis e cupons ativos.</p>
+            </div>
+
+            <div class="departamentos-grid" id="departamentosGrid"></div>
         </div>
     </section>
 
@@ -559,8 +563,29 @@
     <!-- TOAST NOTIFICATION -->
     <div id="toast" class="toast" role="status" aria-live="polite">Link copiado com sucesso!</div>
 
-    <!-- FLOATING ACTION BUTTONS (FAB) -->
+    <!-- FLOATING ACTION BUTTONS (FAB & REDES SOCIAIS) -->
     <div class="fab-container">
+        <!-- ÁREA DE REDES SOCIAIS -->
+        <div class="fab-social-group">
+            <!-- Instagram -->
+            <a href="https://www.instagram.com/achadinhoos.incriveis6/" target="_blank" rel="noopener noreferrer" class="fab-btn fab-social fab-instagram" title="Seguir no Instagram @achadinhoos.incriveis6">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+                    <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path>
+                    <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line>
+                </svg>
+                <span class="fab-label">Achados Incríveis</span>
+            </a>
+
+            <!-- Telegram VIP -->
+            <a href="https://t.me/+sRkNzavwxWw1YzNh" target="_blank" rel="noopener noreferrer" class="fab-btn fab-social fab-telegram" title="Entrar no Grupo VIP do Telegram">
+                <svg viewBox="0 0 24 24" width="18" height="18" fill="currentColor">
+                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.75-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .39z"/>
+                </svg>
+                <span class="fab-label">Telegram VIP</span>
+            </a>
+        </div>
+
         <!-- Compartilhar site inteiro no WhatsApp -->
         <a href="https://api.whatsapp.com/send?text=Olha%20esse%20site%20com%20os%20melhores%20achados%2C%20cupons%20e%20ofertas%20da%20Shopee%3A%20https%3A%2F%2Fsiteonlinebr.github.io%2FAchados-Incriveis%2F" target="_blank" rel="noopener noreferrer" class="fab-btn fab-whatsapp" title="Recomendar Achados Incríveis no WhatsApp">
             <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
